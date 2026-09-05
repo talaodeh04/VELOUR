@@ -92,10 +92,11 @@ document.querySelectorAll("[data-category-jump]").forEach((btn) => {
         setView("store");
         categoryButtons.forEach((b) => {
             const active = b.dataset.category === category;
-            b.classList.toggle("bg-wine", active);
-            b.classList.toggle("text-cream", active);
+            b.classList.toggle("text-wine", active);
+            b.classList.toggle("border-b", active);
             b.classList.toggle("border-wine", active);
-            b.classList.toggle("text-ink/70", !active);
+            b.classList.toggle("pb-0.5", active);
+            b.classList.toggle("text-ink/60", !active);
         });
         renderGrid();
     });
@@ -178,10 +179,11 @@ categoryButtons.forEach((btn) => {
         activeCategory = btn.dataset.category ?? "All";
         categoryButtons.forEach((b) => {
             const active = b === btn;
-            b.classList.toggle("bg-wine", active);
-            b.classList.toggle("text-cream", active);
+            b.classList.toggle("text-wine", active);
+            b.classList.toggle("border-b", active);
             b.classList.toggle("border-wine", active);
-            b.classList.toggle("text-ink/70", !active);
+            b.classList.toggle("pb-0.5", active);
+            b.classList.toggle("text-ink/60", !active);
         });
         renderGrid();
     });
