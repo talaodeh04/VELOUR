@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELOUR — Makeup, Accessories &amp; Bags</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <script>
+    (function () {
+      var saved = localStorage.getItem("velour-theme");
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var theme = saved || (prefersDark ? "dark" : "light");
+      if (theme === "dark") document.documentElement.classList.add("dark");
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        borderRadius: {
+          none: "0px", sm: "0px", DEFAULT: "0px", md: "0px",
+          lg: "0px", xl: "0px", "2xl": "0px", "3xl": "0px", full: "0px"
+        },
+        extend: {
+          colors: {
+            cream: "rgb(var(--c-cream) / <alpha-value>)",
+            surface: "rgb(var(--c-surface) / <alpha-value>)",
+            blush: "rgb(var(--c-blush) / <alpha-value>)",
+            rose: "rgb(var(--c-rose) / <alpha-value>)",
+            wine: "rgb(var(--c-wine) / <alpha-value>)",
+            ink: "rgb(var(--c-ink) / <alpha-value>)",
+            line: "rgb(var(--c-line) / <alpha-value>)",
+            gold: "rgb(var(--c-gold) / <alpha-value>)",
+          },
+          fontFamily: {
+            serif: ["'Cormorant Garamond'", "serif"],
+            sans: ["Poppins", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --c-cream: 247 241 236;
+      --c-surface: 255 255 255;
+      --c-blush: 237 220 213;
+      --c-rose: 179 125 137;
+      --c-wine: 92 36 48;
+      --c-ink: 34 16 25;
+      --c-line: 220 201 194;
+      --c-gold: 169 134 90;
+    }
+
+    .dark {
+      --c-cream: 27 16 19;
+      --c-surface: 36 20 25;
+      --c-blush: 44 26 31;
+      --c-rose: 201 154 164;
+      --c-wine: 168 69 90;
+      --c-ink: 243 231 228;
+      --c-line: 62 48 53;
+      --c-gold: 210 172 121;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: rgb(var(--c-cream));
+      font-family: 'Poppins', sans-serif;
+      color: rgb(var(--c-ink));
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    ::selection {
+      background: rgb(var(--c-wine));
+      color: rgb(var(--c-cream));
+    }
+
+    #cart-drawer.translate-x-full {
+      transform: translateX(100%);
+    }
+
+    #mobile-nav.hidden {
+      display: none;
+    }
+
+    .kicker {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgb(var(--c-gold));
+    }
+
+    .hero-headline {
+      font-size: clamp(2.75rem, 6vw, 5.25rem);
+      line-height: 1.02;
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgb(var(--c-line));
+    }
+
+    .icon-btn {
+      width: 22px;
+      height: 22px;
+      stroke-width: 1.5;
+    }
+
+    #theme-toggle .icon-moon {
+      display: none;
+    }
+
+    .dark #theme-toggle .icon-sun {
+      display: none;
+    }
+
+    .dark #theme-toggle .icon-moon {
+      display: block;
+    }
+
+    /* The emblem's line-art colors are baked into the PNG and can't read
+       CSS variables, so lift them with a filter in dark mode instead —
+       this brightens the wine linework enough to stay visible against a
+       near-black background instead of vanishing into it. */
+    .dark .brand-mark {
+      filter: brightness(1.9) saturate(1.05);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <div class="bg-wine text-cream text-center text-[11px] tracking-[0.2em] uppercase py-2.5 px-4">
+    Complimentary shipping on orders over $75 &nbsp;·&nbsp; Use code VELOUR10 at checkout
+  </div>
+
+  <header class="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-line">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-3 items-center h-20">
+
+      <div class="flex items-center gap-6">
+        <button id="mobile-menu-toggle" type="button" class="sm:hidden text-ink" aria-label="Menu">
+          <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <nav class="hidden sm:flex items-center gap-8 text-xs tracking-[0.15em] uppercase">
+          <a href="#store" data-view-link="store" class="text-ink/60 hover:text-wine transition-colors">Store</a>
+          <a href="#about" data-view-link="about" class="text-ink/60 hover:text-wine transition-colors">About</a>
+        </nav>
+      </div>
+
+      <a href="#home" data-view-link="home" class="flex items-center justify-center gap-2.5">
+        <img src="logo-emblem-icon.png" alt="" class="brand-mark h-10 w-auto" />
+        <span class="font-serif text-2xl tracking-[0.08em] text-ink">VELOUR</span>
+      </a>
+
+      <div class="flex items-center justify-end gap-5 sm:gap-6">
+        <button id="theme-toggle" type="button" class="text-ink/80 hover:text-wine transition-colors"
+          aria-label="Toggle dark mode">
+          <svg class="icon-btn icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2" />
+            <path
+              d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.55 1.55M18.25 18.25l1.55 1.55M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.55-1.55M18.25 5.75l1.55-1.55" />
+          </svg>
+          <svg class="icon-btn icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M20.2 14.6A8.4 8.4 0 119.4 3.8a7 7 0 0010.8 10.8z" />
+          </svg>
+        </button>
+
+        <a href="#wishlist" data-view-link="wishlist"
+          class="relative flex items-center text-ink/80 hover:text-wine transition-colors" aria-label="Wishlist">
+          <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M12 20.3s-7.2-4.4-9.7-8.6C.7 8.1 2.5 4.3 6.3 4.3c2 0 3.5 1.1 4.4 2.5.9-1.4 2.4-2.5 4.4-2.5 3.8 0 5.6 3.8 3.9 7.4-2.5 4.2-9.6 8.6-9.6 8.6z" />
+          </svg>
+          <span id="wishlist-badge"
+            class="hidden absolute -top-2 -right-2 bg-wine text-cream text-[10px] leading-none w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+
+        <button id="cart-toggle" type="button"
+          class="relative flex items-center text-ink/80 hover:text-wine transition-colors" aria-label="Bag">
+          <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M6.2 8h11.6l1.3 12.2a1.1 1.1 0 01-1.1 1.2H6a1.1 1.1 0 01-1.1-1.2L6.2 8z" />
+            <path d="M8.7 8V6.3a3.3 3.3 0 016.6 0V8" />
+          </svg>
+          <span id="cart-badge"
+            class="hidden absolute -top-2 -right-2 bg-wine text-cream text-[10px] leading-none w-4 h-4 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobile-nav"
+      class="hidden sm:hidden border-t border-line bg-cream px-6 py-5 flex flex-col gap-4 text-sm uppercase tracking-wide">
+      <a href="#store" data-view-link="store" class="text-ink/70">Store</a>
+      <a href="#about" data-view-link="about" class="text-ink/70">About</a>
+      <a href="#wishlist" data-view-link="wishlist" class="text-ink/70">Wishlist</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="view-home">
+
+      <section class="grid md:grid-cols-5 min-h-[85vh]">
+        <div class="md:col-span-2 bg-wine text-cream flex items-center order-2 md:order-1">
+          <div class="px-10 md:px-16 py-20 max-w-md">
+            <p class="kicker mb-8">Autumn Journal — N°01</p>
+            <h1 class="hero-headline font-serif italic mb-8">Quiet<br />luxury.</h1>
+            <p class="text-cream/65 leading-loose mb-12 text-[15px]">
+              Makeup, jewelry and leather goods chosen for how they wear over
+              time — not just how they photograph. Small batches. Considered materials.
+              Nothing sold for the sake of selling.
+            </p>
+            <button data-go-store type="button"
+              class="text-xs tracking-[0.25em] uppercase border-b border-gold pb-1 hover:border-cream transition-colors">
+              Shop the Edit →
+            </button>
+          </div>
+        </div>
+        <div class="md:col-span-3 order-1 md:order-2 bg-blush overflow-hidden">
+          <img src="/images/hero/velour-hero.jpg" alt="VELOUR seasonal edit" class="w-full h-full object-cover" />
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-6 py-28">
+        <div class="flex items-end gap-4 mb-14">
+          <span class="section-number text-5xl">01</span>
+          <div class="pb-1">
+            <p class="kicker mb-1">Explore</p>
+            <h2 class="font-serif text-3xl text-ink">Shop by Category</h2>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-px bg-line">
+          <button data-category-jump="Makeup" class="relative aspect-[3/4] overflow-hidden group text-left bg-cream">
+            <img src="/images/categories/makeup.jpg" alt="Makeup"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-ink/40 group-hover:bg-ink/25 transition-colors"></div>
+            <div class="absolute bottom-0 left-0 p-8 text-cream">
+              <p class="kicker text-cream/70 mb-2">01 — Complexion, Lip &amp; Eye</p>
+              <h3 class="font-serif text-3xl">Makeup</h3>
+            </div>
+          </button>
+          <button data-category-jump="Accessories"
+            class="relative aspect-[3/4] overflow-hidden group text-left bg-cream">
+            <img src="/images/categories/accessories.jpg" alt="Accessories"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-ink/40 group-hover:bg-ink/25 transition-colors"></div>
+            <div class="absolute bottom-0 left-0 p-8 text-cream">
+              <p class="kicker text-cream/70 mb-2">02 — Jewelry &amp; Scarves</p>
+              <h3 class="font-serif text-3xl">Accessories</h3>
+            </div>
+          </button>
+          <button data-category-jump="Bags" class="relative aspect-[3/4] overflow-hidden group text-left bg-cream">
+            <img src="/images/categories/bags.jpg" alt="Bags"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-ink/40 group-hover:bg-ink/25 transition-colors"></div>
+            <div class="absolute bottom-0 left-0 p-8 text-cream">
+              <p class="kicker text-cream/70 mb-2">03 — Totes, Clutches &amp; More</p>
+              <h3 class="font-serif text-3xl">Bags</h3>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-6 pb-28">
+        <div class="flex items-end justify-between mb-14">
+          <div class="flex items-end gap-4">
+            <span class="section-number text-5xl">02</span>
+            <div class="pb-1">
+              <p class="kicker mb-1">Most Loved</p>
+              <h2 class="font-serif text-3xl text-ink">The Bestsellers</h2>
+            </div>
+          </div>
+          <button data-go-store
+            class="text-xs tracking-[0.2em] uppercase text-wine border-b border-wine/40 hover:border-wine pb-1">View All
+            →</button>
+        </div>
+        <div id="bestsellers-strip" class="flex gap-6 overflow-x-auto pb-4 -mx-1 px-1 snap-x"></div>
+      </section>
+
+      <section class="bg-blush py-28">
+        <div class="max-w-4xl mx-auto px-6 text-center mb-20">
+          <p class="kicker mb-6">In Their Words</p>
+          <p class="font-serif italic text-3xl md:text-4xl text-ink leading-snug">
+            "Every piece feels considered — like someone actually thought about
+            how I'd live with it, not just how it'd look in a photo."
+          </p>
+          <p class="text-sm text-wine mt-6 tracking-wide">— Lina K., three years a customer</p>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 grid sm:grid-cols-3 gap-6">
+          <div class="bg-cream border border-line p-8">
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">"The lipstick genuinely lasts through a full workday.
+              First one that hasn't let me down."</p>
+            <p class="text-xs text-wine font-serif italic">Lina K.</p>
+          </div>
+          <div class="bg-cream border border-line p-8">
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">"The tote is even better in person — the leather feels
+              like it'll only get better with age."</p>
+            <p class="text-xs text-wine font-serif italic">Farah A.</p>
+          </div>
+          <div class="bg-cream border border-line p-8">
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">"Packaging alone made this feel like a gift to myself.
+              Ordering again."</p>
+            <p class="text-xs text-wine font-serif italic">Noor S.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-6 py-28">
+        <div class="flex items-end gap-4 mb-14 justify-center text-center flex-col">
+          <span class="section-number text-5xl self-center">04</span>
+          <p class="kicker">Watch</p>
+          <h2 class="font-serif text-3xl text-ink">The Campaign Film</h2>
+        </div>
+        <div class="border border-line p-2">
+          <div class="aspect-video bg-ink flex items-center justify-center">
+            <video class="w-full h-full object-cover" controls preload="metadata">
+              <source src="media/velour-campaign.mp4" type="video/mp4" />
+              Your browser doesn't support embedded video.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-16 items-center">
+        <div class="aspect-[4/5] bg-blush overflow-hidden order-2 md:order-1">
+          <img src="/images/about/founder.jpg" alt="Founder portrait" class="w-full h-full object-cover" />
+        </div>
+        <div class="order-1 md:order-2">
+          <span class="section-number text-5xl block mb-4">05</span>
+          <p class="kicker mb-4">A Note From Us</p>
+          <h2 class="font-serif text-3xl md:text-4xl text-ink mb-8 leading-snug">
+            "We'd rather sell fewer things, well, than fill a catalog."
+          </h2>
+          <p class="text-ink/60 leading-relaxed mb-5 text-[15px]">
+            VELOUR started as a question: why does most beauty and accessory
+            packaging look disposable? We work with small studios and
+            family-run ateliers who care as much about how a piece ages as
+            how it looks on day one.
+          </p>
+          <p class="text-ink/60 leading-relaxed text-[15px]">
+            Every formula is tested for wear across a full day, and every bag
+            is built on a frame meant to outlast a season.
+          </p>
+        </div>
+      </section>
+
+      <section class="border-y border-line bg-ink text-cream">
+        <div class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
+          <div>
+            <p class="font-serif text-2xl mb-1">Cruelty-Free</p>
+            <p class="text-xs text-cream/50 tracking-wide">Never tested on animals</p>
+          </div>
+          <div>
+            <p class="font-serif text-2xl mb-1">Hand-Finished</p>
+            <p class="text-xs text-cream/50 tracking-wide">Small-batch ateliers</p>
+          </div>
+          <div>
+            <p class="font-serif text-2xl mb-1">30-Day Returns</p>
+            <p class="text-xs text-cream/50 tracking-wide">No questions asked</p>
+          </div>
+          <div>
+            <p class="font-serif text-2xl mb-1">Worldwide</p>
+            <p class="text-xs text-cream/50 tracking-wide">Shipping to 40+ countries</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-6 py-28">
+        <div class="flex items-end gap-4 mb-14 justify-center text-center flex-col">
+          <p class="kicker">Follow Along</p>
+          <h2 class="font-serif text-3xl text-ink">@velour</h2>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-1">
+          <div class="aspect-square overflow-hidden"><img src="/images/social/social-01.jpg"
+              class="w-full h-full object-cover" alt="" /></div>
+          <div class="aspect-square overflow-hidden"><img src="/images/social/social-02.jpg"
+              class="w-full h-full object-cover" alt="" /></div>
+          <div class="aspect-square overflow-hidden"><img src="/images/social/social-03.jpg"
+              class="w-full h-full object-cover" alt="" /></div>
+          <div class="aspect-square overflow-hidden"><img src="/images/social/social-04.jpg"
+              class="w-full h-full object-cover" alt="" /></div>
+          <div class="aspect-square overflow-hidden"><img src="/images/social/social-05.jpg"
+              class="w-full h-full object-cover" alt="" /></div>
+          <div class="aspect-square overflow-hidden"><img src="/images/social/social-06.jpg"
+              class="w-full h-full object-cover" alt="" /></div>
+        </div>
+      </section>
+
+      <section class="bg-wine py-28">
+        <div class="max-w-xl mx-auto px-6 text-center">
+          <p class="kicker text-cream/60 mb-4">Stay Close</p>
+          <h2 class="font-serif text-3xl md:text-4xl text-cream mb-4">Join the List</h2>
+          <p class="text-cream/60 mb-10 text-[15px]">New drops, early access, one email a month — nothing more.</p>
+          <form id="newsletter-form" class="flex gap-0 border border-cream/30">
+            <input type="email" required placeholder="you@email.com"
+              class="flex-1 px-5 py-3.5 text-sm bg-transparent text-cream placeholder-cream/40 focus:outline-none" />
+            <button type="submit"
+              class="bg-cream text-wine px-7 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-gold hover:text-cream transition-colors">
+              Subscribe
+            </button>
+          </form>
+          <p id="newsletter-message" class="text-xs text-cream/70 mt-4"></p>
+        </div>
+      </section>
+
+      <section class="max-w-3xl mx-auto px-6 py-28">
+        <div class="flex items-end gap-4 mb-14 justify-center text-center flex-col">
+          <p class="kicker">Questions</p>
+          <h2 class="font-serif text-3xl text-ink">Frequently Asked</h2>
+        </div>
+        <div class="divide-y divide-line border-t border-b border-line">
+          <div class="py-5">
+            <button data-faq-trigger class="w-full flex items-center justify-between text-left">
+              <span class="font-serif text-lg">What's your return policy?</span>
+              <span data-faq-icon class="text-xl text-wine transition-transform">+</span>
+            </button>
+            <p class="hidden mt-4 text-ink/60 leading-relaxed text-sm">Unopened items can be returned within 30 days for
+              a full refund.</p>
+          </div>
+          <div class="py-5">
+            <button data-faq-trigger class="w-full flex items-center justify-between text-left">
+              <span class="font-serif text-lg">Do you ship internationally?</span>
+              <span data-faq-icon class="text-xl text-wine transition-transform">+</span>
+            </button>
+            <p class="hidden mt-4 text-ink/60 leading-relaxed text-sm">Yes — most orders arrive within 5–10 business
+              days worldwide.</p>
+          </div>
+          <div class="py-5">
+            <button data-faq-trigger class="w-full flex items-center justify-between text-left">
+              <span class="font-serif text-lg">Are your materials cruelty-free?</span>
+              <span data-faq-icon class="text-xl text-wine transition-transform">+</span>
+            </button>
+            <p class="hidden mt-4 text-ink/60 leading-relaxed text-sm">Every formula and leather good is cruelty-free
+              and ethically sourced.</p>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <section id="view-store" class="hidden max-w-7xl mx-auto px-6 py-20">
+      <div class="mb-16 text-center">
+        <p class="kicker mb-3">Full Catalog</p>
+        <h1 class="font-serif text-5xl text-ink">The Store</h1>
+      </div>
+
+      <div class="grid md:grid-cols-[220px_1fr] gap-14">
+
+        <aside class="space-y-10">
+          <div>
+            <p class="text-xs tracking-[0.2em] uppercase text-ink/40 mb-4">Category</p>
+            <div class="flex flex-col items-start gap-3 text-sm">
+              <button data-category="All" class="text-wine border-b border-wine pb-0.5">All Pieces</button>
+              <button data-category="Makeup" class="text-ink/60 hover:text-wine transition-colors">Makeup</button>
+              <button data-category="Accessories"
+                class="text-ink/60 hover:text-wine transition-colors">Accessories</button>
+              <button data-category="Bags" class="text-ink/60 hover:text-wine transition-colors">Bags</button>
+            </div>
+          </div>
+          <div>
+            <p class="text-xs tracking-[0.2em] uppercase text-ink/40 mb-4">Sort By</p>
+            <select id="sort-select"
+              class="w-full border border-line bg-transparent px-3 py-2 text-sm focus:outline-none focus:border-wine">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </div>
+          <div class="hidden md:block aspect-[3/4] bg-blush overflow-hidden">
+            <img src="/images/editorial/beauty-flatlay.jpg" alt="" class="w-full h-full object-cover" />
+          </div>
+        </aside>
+
+        <div>
+          <div class="flex items-center justify-between mb-8 border-b border-line pb-4">
+            <p id="result-count" class="text-sm text-ink/50">24 pieces</p>
+            <input id="search-input" type="text" placeholder="Search the store…"
+              class="border border-line bg-transparent px-4 py-2 text-sm w-56 focus:outline-none focus:border-wine" />
+          </div>
+          <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-about" class="hidden">
+      <div class="max-w-3xl mx-auto px-6 py-28">
+        <p class="kicker mb-5">Our Story</p>
+        <h1 class="font-serif text-5xl text-ink mb-10 leading-snug">Made to be worn, not just bought.</h1>
+        <div class="space-y-6 text-ink/60 leading-relaxed text-[15px]">
+          <p>VELOUR started as a question: why does most beauty and accessory packaging
+            look disposable? We work with small studios and family-run ateliers who
+            care as much about how a piece ages as how it looks on day one.</p>
+          <p>Every formula is tested for wear across a full day, and every bag is built
+            on a frame meant to outlast a season. We'd rather sell fewer things, well,
+            than fill a catalog.</p>
+          <p>Thank you for shopping with us — we hope these pieces earn a permanent
+            spot in your routine.</p>
+        </div>
+        <img src="logo-emblem-icon.png" alt="VELOUR emblem" class="brand-mark w-32 mt-16" />
+      </div>
+    </section>
+
+    <section id="view-cart" class="hidden max-w-5xl mx-auto px-6 py-20">
+      <p class="kicker mb-2">Review</p>
+      <h1 class="font-serif text-5xl text-ink mb-14">Your Bag</h1>
+
+      <div class="grid md:grid-cols-3 gap-14">
+        <div class="md:col-span-2">
+          <div id="cart-page-lines"></div>
+          <p id="cart-page-empty" class="hidden text-ink/50 py-20 text-center font-serif text-xl">
+            Your bag is empty. <button data-go-store class="text-wine underline">Continue shopping →</button>
+          </p>
+        </div>
+
+        <div id="cart-page-summary" class="hidden border border-line p-7 h-fit">
+          <h2 class="font-serif text-xl text-ink mb-6">Order Summary</h2>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between text-ink/60">
+              <span>Subtotal</span>
+              <span id="cart-page-subtotal">$0.00</span>
+            </div>
+            <div id="cart-page-discount-row" class="hidden flex justify-between text-wine">
+              <span>Discount</span>
+              <span id="cart-page-discount">$0.00</span>
+            </div>
+            <div class="flex justify-between text-ink/60">
+              <span>Shipping</span>
+              <span id="cart-page-shipping">$0.00</span>
+            </div>
+          </div>
+          <div class="flex justify-between font-serif text-lg text-ink border-t border-line mt-5 pt-5 mb-7">
+            <span>Total</span>
+            <span id="cart-page-total">$0.00</span>
+          </div>
+
+          <form id="promo-form" class="mb-7">
+            <label class="text-xs tracking-wide text-ink/50 block mb-2">Promo code</label>
+            <div class="flex gap-2">
+              <input id="promo-input" type="text" placeholder="VELOUR10"
+                class="flex-1 border border-line px-3 py-2 text-sm focus:outline-none focus:border-wine" />
+              <button type="submit" class="border border-line px-4 py-2 text-sm hover:border-wine">Apply</button>
+            </div>
+            <p id="promo-message" class="text-xs mt-2"></p>
+          </form>
+
+          <button id="checkout-button" type="button"
+            class="w-full bg-wine text-cream py-4 text-xs tracking-[0.2em] uppercase hover:bg-ink transition-colors">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-wishlist" class="hidden max-w-7xl mx-auto px-6 py-20">
+      <p class="kicker mb-2">Saved</p>
+      <h1 class="font-serif text-5xl text-ink mb-14">Your Wishlist</h1>
+      <div id="wishlist-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <p id="wishlist-empty" class="hidden text-ink/50 py-20 text-center font-serif text-xl">
+        Nothing saved yet. <button data-go-store class="text-wine underline">Browse the store →</button>
+      </p>
+    </section>
+  </main>
+
+  <div id="quick-view-modal" class="hidden fixed inset-0 bg-ink/60 z-50 flex items-center justify-center p-4">
+    <div class="bg-cream max-w-3xl w-full max-h-[90vh] overflow-y-auto relative grid md:grid-cols-2">
+      <button id="quick-view-close" type="button"
+        class="absolute top-4 right-4 w-8 h-8 bg-cream/90 text-ink flex items-center justify-center z-10">✕</button>
+      <div id="quick-view-content" class="contents"></div>
+    </div>
+  </div>
+
+  <div id="cart-overlay" class="hidden fixed inset-0 bg-ink/40 z-40"></div>
+  <aside id="cart-drawer"
+    class="fixed top-0 right-0 h-full w-full sm:w-96 bg-cream border-l border-line z-50 translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-line">
+      <h2 class="font-serif text-2xl text-ink">Your Bag</h2>
+      <button id="cart-close" type="button" class="text-ink/50 hover:text-wine text-2xl leading-none">&times;</button>
+    </div>
+    <div id="cart-lines" class="flex-1 overflow-y-auto px-6"></div>
+    <p id="cart-empty" class="hidden text-center text-ink/40 text-sm py-16">Your bag is empty.</p>
+    <div class="border-t border-line px-6 py-6">
+      <div class="flex justify-between font-serif text-lg mb-4">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">$0.00</span>
+      </div>
+      <button type="button" data-go-cart
+        class="w-full bg-wine text-cream py-3 text-xs tracking-[0.2em] uppercase hover:bg-ink transition-colors">
+        View Bag &amp; Checkout
+      </button>
+    </div>
+  </aside>
+
+  <div id="toast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-ink text-cream text-sm px-5 py-3 opacity-0 translate-y-2 transition-all duration-300 z-50 pointer-events-none">
+    Added to your bag
+  </div>
+
+  <footer class="border-t border-line pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-4 gap-10 mb-20">
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-2.5 mb-5">
+          <img src="logo-emblem-icon.png" alt="" class="brand-mark h-9 w-auto" />
+          <span class="font-serif text-xl tracking-[0.08em] text-ink">VELOUR</span>
+        </div>
+        <p class="text-sm text-ink/50 leading-relaxed max-w-xs">Makeup, accessories and bags, chosen for how they wear
+          over time.</p>
+      </div>
+      <div>
+        <h4 class="text-xs tracking-[0.2em] uppercase text-ink/40 mb-4">Shop</h4>
+        <ul class="space-y-2.5 text-sm text-ink/60">
+          <li><button data-go-store class="hover:text-wine">All Products</button></li>
+          <li><button data-view-link="wishlist" class="hover:text-wine">Wishlist</button></li>
+          <li><button data-view-link="cart" class="hover:text-wine">Your Bag</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs tracking-[0.2em] uppercase text-ink/40 mb-4">Company</h4>
+        <ul class="space-y-2.5 text-sm text-ink/60">
+          <li><button data-view-link="about" class="hover:text-wine">About</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-line py-8">
+      <p class="text-center text-xs text-ink/40">VELOUR — Practice project, BinX Tech Frontend Internship, Week 7</p>
+    </div>
+  </footer>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+
+</html>
