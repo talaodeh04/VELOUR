@@ -122,10 +122,37 @@
       color: rgb(var(--c-line));
     }
 
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    a {
+      outline: none;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid rgb(var(--c-wine));
+      outline-offset: 2px;
+    }
+
     .icon-btn {
       width: 22px;
       height: 22px;
       stroke-width: 1.5;
+    }
+
+    @media (max-width: 380px) {
+      .icon-btn {
+        width: 19px;
+        height: 19px;
+      }
     }
 
     #theme-toggle .icon-moon {
@@ -157,9 +184,9 @@
   </div>
 
   <header class="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-line">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-3 items-center h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-3 items-center h-20">
 
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 min-w-0">
         <button id="mobile-menu-toggle" type="button" class="sm:hidden text-ink" aria-label="Menu">
           <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
             <path d="M4 7h16M4 12h16M4 17h16" />
@@ -176,7 +203,7 @@
         <span class="font-serif text-2xl tracking-[0.08em] text-ink">VELOUR</span>
       </a>
 
-      <div class="flex items-center justify-end gap-5 sm:gap-6">
+      <div class="flex items-center justify-end gap-3 sm:gap-6 min-w-0">
         <button id="theme-toggle" type="button" class="text-ink/80 hover:text-wine transition-colors"
           aria-label="Toggle dark mode">
           <svg class="icon-btn icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
